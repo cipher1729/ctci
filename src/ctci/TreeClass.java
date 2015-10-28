@@ -157,6 +157,23 @@ public class TreeClass {
 	}
 	
 	
+	public static void mirrorTree(TreeNode temp)
+	{
+		if(temp==null)
+			return;
+		else
+			{
+				mirrorTree(temp.left);
+				mirrorTree(temp.right);
+				TreeNode tempBranch = new TreeNode();
+				tempBranch= temp.left;
+				temp.left= temp.right;
+				temp.right= tempBranch; 
+			}
+			
+	}
+	
+	
 	
 	
 }

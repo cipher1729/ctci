@@ -8,9 +8,8 @@ public class MainClass {
 
 	public static void main(String[] args)
 	{
-		
-		char [] myArr ={'g','e','e','k','s','f','o','r','g','e','e','k','s'};
-		StringUtils.longestCommonUniqueSubstring(myArr);
+		int[] arr = {1, 56, 58, 57, 90, 92, 94, 93, 91, 45};
+		Sum.largestContiguousIncreasing(arr);
 	}
 	
 	
