@@ -192,6 +192,56 @@ public class TreeClass {
 				return 0;
 			else return (findDepthOfTree(temp.left) < findDepthOfTree(temp.right)? 1+ findDepthOfTree(temp.left) : 1+ findDepthOfTree(temp.right));
 		}
+		
+		//sum of all left leaves//
+		//http://www.geeksforgeeks.org/find-sum-left-leaves-given-binary-tree/
+		//not working//
+		public static int findLeftLeavesSum(TreeNode temp, int sum)
+		{
+			//check if left subtree is a leaf
+			if(temp.left.left== null && temp.left.right== null)
+				{
+					return sum + temp.left.data;
+				}
+			 sum = findLeftLeavesSum(temp.left, sum);
+			sum = findLeftLeavesSum(temp.right, sum);
+			return sum;
+		}
+		
+		//http://www.geeksforgeeks.org/serialize-deserialize-n-ary-tree/
+		//WORKS//
+		public static void SerializeTree(TreeNode temp)
+		{
+			if(temp==null)
+				return;
+			else
+			{
+				System.out.print(temp.data+" ");
+				SerializeTree(temp.left);
+				//if(temp.left!=null && temp.right!=null )
+				SerializeTree(temp.right);
+				System.out.print(")");
+			}
+			
+		}
+		
+		//equality of trees//
+		//WORKS//
+		public static int equalTrees(TreeNode temp1, TreeNode temp2)
+		{
+				if(temp1==null && temp2==null)
+					return 1;
+				else if(temp1==null)
+					return 0;
+				else if(temp2==null)
+					return 0;
+				int res1 = equalTrees(temp1.left, temp2.left);
+				int res2= equalTrees(temp1.right, temp2.right);
+				if(res1 == 1 && res2==1)
+					return 1;
+				else
+					return 0;
+		}
 	
 	
 	
