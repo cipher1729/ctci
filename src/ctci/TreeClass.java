@@ -173,6 +173,25 @@ public class TreeClass {
 			
 	}
 	
+	//depth of tree//
+	//working//
+	public static int findDepthOfTree(TreeNode temp)
+	{
+		if(temp==null)
+			return 0;
+		else return (findDepthOfTree(temp.left) > findDepthOfTree(temp.right)? 1+ findDepthOfTree(temp.left) : 1+ findDepthOfTree(temp.right));
+	}
+	
+	//find minimum depth of tree//
+	
+		//mindepth of tree//
+		//working i guess//
+		public static int findMinDepthOfTree(TreeNode temp)
+		{
+			if(temp==null)
+				return 0;
+			else return (findDepthOfTree(temp.left) < findDepthOfTree(temp.right)? 1+ findDepthOfTree(temp.left) : 1+ findDepthOfTree(temp.right));
+		}
 	
 	
 	
