@@ -44,4 +44,63 @@ public class AllSorts {
 		return resArray;
 	}
 	
+	//insertion sort
+	//works//
+	public static void insertionSort(int[] arr)
+	{
+		for(int p=1;p<arr.length;p++)
+		{
+			
+		
+		int temp= arr[p];
+		while(p-1>=0 && arr[p-1] > temp )
+			{
+				arr[p]= arr[p-1];
+				p--;
+			}
+		arr[p] = temp;
+		
+		}
+	}
+	
+	//quick sort//
+	//works//
+	public static void quickSort(int[] arr, int i, int j)
+	{
+		if(j-i==0) return;
+		int pivot = i;
+		int p=i+1;
+		int q=j;
+		
+		
+		//equality is to handle the case of 2 elements
+		while(p<=q)
+		{
+			while(arr[p]<arr[pivot] && p<j) p++;
+			while(arr[q]>arr[pivot] && q>i) q--;
+			if(p<q)
+			{
+			int temp =arr[p];
+			arr[p]= arr[q];
+			arr[q]= temp;
+			}
+			else
+			{
+				int temp =arr[pivot];
+				arr[pivot]= arr[q];
+				arr[q]= temp;	
+			}
+		}
+		
+		//have to check for boundary conditions here
+		if(q-1>=i) quickSort(arr, i, q-1);
+		else return;
+		
+		if(q+i<=j)
+		quickSort(arr,q+1,j);
+		else return;
+	}
+	
+	
+	
 }

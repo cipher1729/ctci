@@ -12,29 +12,32 @@ public class MainClass {
 	
 	public static void main(String[] args)
 	{
-		TreeClass treeClass = new TreeClass();
-		TreeNode head = treeClass.insertIntoTree(null, 10);
-		treeClass.insertIntoTree(head, 7);
-		treeClass.insertIntoTree(head, 6);
-		treeClass.insertIntoTree(head, 9);
-		treeClass.insertIntoTree(head, 8);
-		treeClass.insertIntoTree(head, 100);
-		treeClass.insertIntoTree(head, 99);
-
-		TreeClass treeClass2 = new TreeClass();
-		TreeNode head2 = treeClass2.insertIntoTree(null, 10);
-		treeClass2.insertIntoTree(head2, 7);
-		treeClass2.insertIntoTree(head2, 6);
-		treeClass2.insertIntoTree(head2, 9);
-		treeClass2.insertIntoTree(head2, 8);
-		treeClass2.insertIntoTree(head2, 100);
-		treeClass2.insertIntoTree(head2, 99);
-		treeClass2.insertIntoTree(head2, 103);
+		MyLinkedList myLinkedList = new  MyLinkedList();
+		LinkedListNode head1 = myLinkedList.addElement(1);
+		myLinkedList.addElement(2);
+		myLinkedList.addElement(5);
+		myLinkedList.addElement(7);
+		myLinkedList.addElement(8);
+		myLinkedList.addElement(11);
+		
+		MyLinkedList myLinkedList2 = new  MyLinkedList();
+		LinkedListNode head2 = myLinkedList2.addElement(0);
+		myLinkedList2.addElement(2);
+		myLinkedList2.addElement(3);
+		myLinkedList2.addElement(4);
+		myLinkedList2.addElement(5);
+		myLinkedList2.addElement(6);
+		
+		//myLinkedList2.reverseLL(head2);
+		
+		//myLinkedList2.printAllElements();
+		myLinkedList.swap2elements(2, 8);
+		
+		myLinkedList.printAllElements();
+		//System.out.println(myLinkedList.compareLL(head1, head2));
 		
 		
-	 	System.out.println(treeClass.equalTrees(head, head2));
-		//treeClass.printPreOrder(head);
-		
+		//myLinkedList.printAllElements();
 	}
 	
 	
