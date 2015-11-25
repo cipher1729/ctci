@@ -1,5 +1,7 @@
 package ctci;
 
+import java.util.HashMap;
+
 public class MyLinkedList {
 
 	
@@ -11,6 +13,7 @@ public class MyLinkedList {
 			head = new LinkedListNode();
 			head.data = data;
 			head.next = null;
+			return head;
 		}
 		else
 		{
@@ -21,8 +24,9 @@ public class MyLinkedList {
 			tempNode.data = data;
 			tempNode.next= null;
 			temp.next = tempNode;
+			return temp;
 		}
-		return head;
+		
 		
 	}
 	
@@ -168,9 +172,109 @@ public class MyLinkedList {
 		//swap p's next and q'next
 		LinkedListNode temp = p.next;
 		p.next = q.next;
-		q.next = temp;
-		
-		
+		q.next = temp;	
 	}
+	
+	//WORKS//
+	public void deleteElement(Object data)
+	{
+		if(head.data==data)
+			head = head.next;
+		else
+		{
+			LinkedListNode temp = head;
+			while(temp.next.data!=data)
+				temp=temp.next;
+			temp.next = temp.next.next;
+		}
+	}
+	
+	//recursive length//
+	//works//
+	public int lengthofLL(LinkedListNode temp)
+	{
+		
+		if(temp==null)
+			return 0;
+		else return 1 + lengthofLL(temp.next);
+	}
+	
+	public LinkedListNode getHead()
+	{
+		return head;
+	}
+	
+	//delete a LL
+	//works, but leaves a flaoting head//
+	public void deleteLL(LinkedListNode temp)
+	{
+		if(temp==null)
+			return;
+		else
+			{	deleteLL(temp.next);
+				temp.next=null;
+			}
+	}	
+	
+	//works //
+	//not tested with nodes at head and end//
+	public void removeDuplicates()
+	{
+		LinkedListNode p= head;
+		LinkedListNode q = head.next;
+		
+		HashMap<Integer,Integer> myHash = new HashMap<>();
+		
+		myHash.put((int)p.data, 1);
+		
+		while(p!=null)
+		{
+			while(q!=null && myHash.get((int)q.data)!=null)		
+		{
+			p.next=p.next.next;
+			q=p.next;
+		}
+			if(q!=null)
+			{
+				myHash.put((int)q.data, 1);
+				p=p.next;
+				q=q.next;
+			}
+			else
+				p=p.next;
+			}
+	}
+	
+	
+	public int detectLoop()
+	{
+		LinkedListNode hare =head, tortoise = head;
+		
+		while(hare!=null)
+		{
+				if(hare.next==null)
+			
+				return 0;
+				else
+				{
+				
+				hare=hare.next;
+				if(hare.next==null)
+					return 0;
+				else
+					{
+						hare=hare.next;
+						tortoise = tortoise.next;
+					}
+				if(hare.data==tortoise.data)
+					return (int)hare.data;
+				
+				}
+				
+		}
+		
+		return 0;
+	}
+	
 	
 }

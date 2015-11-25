@@ -1,6 +1,7 @@
 package ctci;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class StringUtils {
 
@@ -102,5 +103,113 @@ public class StringUtils {
 			 maxLen= currLen;
 		 System.out.println(maxLen);
 	 }
+	 
+	 
+	 
+	 //not working//
+	 public static StringBuilder reverseString(String str, int i, StringBuilder result)
+	 {
+		 if(i== str.length())
+			 return null;
+		 else
+		 {
+			 return result.append(reverseString(str, i+1, result));
+			 
+		 }			 
+	 }
+	 
+	 //works//
+	 public static String reverseByStack(String in)
+	 {
+		 Stack stack = new Stack();
+		 for(int i=0;i<in.length();i++)
+			 stack.push(in.charAt(i));
+		 char[] arr = in.toCharArray();
+		 
+		 
+		 for(int i=0;i<in.length();i++)
+			 arr[i] = (char) stack.pop();
+		 return new String(arr);
+		 
+	 }
+	 
+	 public static boolean checkPalindrome(String s)
+	 {
+		 int l=0;
+		 int r= s.length()-1;
+		 boolean isPalindrome= true;
+		 while(l<r)
+		 {
+			 if(s.charAt(l)!= s.charAt(r))
+				 {
+				 	isPalindrome= false;
+				 	break;
+				 }
+			 else
+			 {
+				 l++;
+				 r--;
+			 }
+		 }
+		 return isPalindrome;
+	 }
+	 
+	 
+	 //works//
+	 public static void removeSpaces(char[] arr)
+	 {
+		 int p=0;
+		 for(int i=0;i<arr.length;i++)
+		 {
+			 if(arr[i]!=' ')
+				 arr[p++]= arr[i];
+		 }
+	 }
+	 
+	 //works//
+	 public static int greatestBracketDepth(char[] arr)
+	 {
+		 Stack stack = new Stack();
+		 int currCount=0, maxCount=-1;
+		 for(int i=0;i<arr.length;i++)
+		 {
+			 if(arr[i]=='(')
+			 {
+				 stack.push(arr[i]);
+				 currCount++;
+			 }
+			 else if(arr[i]==')')
+				 {
+				 	if(currCount> maxCount)
+				 		{
+				 			maxCount= currCount;
+				 		}
+				 	currCount--;	
+				 		
+				 }
+			
+			 
+		 }
+		 return maxCount;
+	 }
+	 
+	 
+	 public static void allStringRecursively(char[] arr, int i)
+	 {
+		 if(i==arr.length)
+		 {
+			return;
+		 }
+		 else
+		 {
+			 System.out.print(arr[i]);
+			 allStringRecursively(arr, i+1);
+			 System.out.print(" ");
+			 allStringRecursively(arr, i+1);
+			 
+		 }
+	 }
+	 
+	 
 	    
 }

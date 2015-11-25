@@ -242,6 +242,15 @@ public class TreeClass {
 				else
 					return 0;
 		}
+		
+		public static void makeTreeFromInOrderandPreOrder(char[] preOrder, char[] inOrder, int i, int j)
+		{
+			int mid =(i+j)/2;
+			
+			TreeClass treeClass = new TreeClass();
+			treeClass.insertIntoTree(null, preOrder[0]);
+			
+		}
 	
 	
 	

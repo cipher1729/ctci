@@ -36,4 +36,38 @@ public class Paths {
 		return temp;
 	}
 	
+	public static void printAllCombos(int k, int n)
+	{
+		if (k==0)
+				return;
+		for(int diff=1;diff<=k;diff++)
+		{
+			System.out.println(diff);
+			printAllCombos(k-diff, n);
+		}
+	}
+	
+	
+	public static int findPath(int a, int b, int x, int y)
+	{
+		if((a > x) && (a-b) <x)
+			return 0;
+		else if((a<x) && (a+b) >x)
+			return 0;
+		else if((b>y) && (a-b <y))
+			return 0;
+		else if((b<y) && (a+b >y))
+			return 0;
+		else
+			{
+					if( findPath(a+b,b,x,y)==1 ||
+				( findPath(a,a+b,x,y)==1)||
+				(findPath(a-b,b,x,y)==1)||
+				(findPath(a,a-b,x,y)==1))
+				return 1;
+			  else
+				  return 0;
+			}
+	}
+	
 }
